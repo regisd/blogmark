@@ -16,33 +16,31 @@
             accesskey="&interface.accessKey;" 
             insertafter="context-bookmarkpage"
 			class="menuitem-iconic" 
-			image="chrome://blogmark/skin/icon-small.png"
+			image="chrome://blogmark/skin/icon-small-add.png"
             oncommand="BlogmarkMenu.addThis();"/>
 </popup>
 
 <!-- Firefox Toolbar Element -->
-<toolbox id="navigator-toolbox">
-	<toolbarpalette id="BrowserToolbarPalette">
-		<!-- I can't manage to have the image working with the CSS -->
+<toolbarpalette id="BrowserToolbarPalette">
 		<toolbarbutton id="blogmark-button-public"
 			       class="toolbarbutton-1  chromeclass-toolbar-additional"
 			       label="&public.button.label;" 
-			       image="chrome://blogmark/skin/icon-big.png"
+			       tooltiptext="&public.button.tooltip;"
 			       oncommand="BlogmarkMenu.publicMarks();" />
 
 		<toolbarbutton id="blogmark-button-my"
-			       class="toolbarbutton-2  chromeclass-toolbar-additional"
+			       class="toolbarbutton-1  chromeclass-toolbar-additional"
 			       label="&my.button.label;" 
-			       image="chrome://blogmark/skin/icon-big-my.png"
+			       tooltiptext="&my.button.tooltip;"
 			       oncommand="BlogmarkMenu.myMarks();" />
 
-		<toolbarbutton id="blogmark-button"
+		<toolbarbutton id="blogmark-button-add"
 			       class="toolbarbutton-1  chromeclass-toolbar-additional"
 			       label="&add.button.label;" 
-			       image="chrome://blogmark/skin/icon-big-add.png"
+			       tooltiptext="&add.button.tooltip;"
 			       oncommand="BlogmarkMenu.addThis();" />
-	</toolbarpalette>
-</toolbox>
+</toolbarpalette>
+
 <!-- Firefox menu -->
 <menu id="bookmarks-menu">
 	<menupopup id="menu_BookmarksPopup">

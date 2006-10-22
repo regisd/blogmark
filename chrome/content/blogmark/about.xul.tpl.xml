@@ -11,14 +11,19 @@
 
 <!-- Original template by Jed Brown -->
 
-<groupbox align="center" orient="horizontal">
+<groupbox align="center" orient="horizontal" style="background: white;">
 <vbox>
-  <text value="Blogmark" style="font-weight: bold; font-size: large;"/>
-  <text value="ver. @VERSION@"/>
+  <box>
+  <text value="Blogmark" style="font-weight: bold; font-size: larger;"/>
+  <text value=" ver. @VERSION@" style="font-weight: bold; font-size: larger; color: #aaaaaa;"/>
+  </box>
   <separator class="thin"/>
-  <text value="&WrittenBy;" style="font-weight: bold;"/>
+  <text value="&credits.writtenBy;" style="font-weight: bold;"/>
   <text value="R&#233;gis D&#233;camps" class="url"
         onclick="window.open('http://www.decamps.info/'); window.close();"/>
+  <text value="&credits.graphicsBy;" style="font-weight: bold;"/>
+  <text value="S&#233;bastien Brothier" class="url"
+        onclick="window.open('http://www.upian.com/'); window.close();"/>
   <separator class="thin"/>
 </vbox>
 <spring flex="1"/>
