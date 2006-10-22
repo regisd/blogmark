@@ -1,10 +1,7 @@
-content blogmark ~/workspace/blogmark/chrome/content/blogmark/
+overlay chrome://navigator/content/navigator.xul        chrome://blogmark/content/blogmarkOverlay.xul
+overlay chrome://browser/content/browser.xul    chrome://blogmark/content/blogmarkOverlay.xul
 
-skin blogmark classic ~/workspace/blogmark/chrome/skin/classic/blogmark/
+content blogmark   jar:chrome/blogmark.jar!/chrome/content/blogmark/
 
-locale blogmark en ~/workspace/blogmark/chrome/locale/en/blogmark/
-locale blogmark en ~/workspace/blogmark/chrome/locale/fr/blogmark/
-
-overlay chrome://browser/content/browser.xul  chrome://blogmark/content/blogmarkOverlay.xul
-
-style chtome://skin/classic/toolbar-buttons.css
+locale  blogmark   en-US   jar:chrome/blogmark.jar!/locale/en/blogmark/
+locale  blogmark   fr-FR   jar:chrome/blogmark.jar!/locale/fr/blogmark/

@@ -28,7 +28,8 @@ var BlogmarkMenu = {
   myMarks: function() {
     const url = "http://blogmarks.net/my/"
 
-    document.getElementById("content")
+    document
+       .getElementById("content")
        .webNavigation
        .loadURI(url, 0, null, null, null)
   },
