@@ -2,7 +2,7 @@
 <!-- This build file was written by Régis Décamps <decamps@users.sf.net> -->
 
 <project name="blogmark" default="createxpi">
-        <property name="VERSION" value="1.4-rc1"/>
+        <property name="VERSION" value="1.5"/>
         <property name="DESCRIPTION" value="New context-menu item to add the current page in your Blogmarks"/>
         <!-- XPI file is created after "chrome/blogmark.jar" 
              is created, which is then stuffed into "blogmark.xpi" -->
