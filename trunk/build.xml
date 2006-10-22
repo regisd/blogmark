@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!-- This build file was written by Régis Décamps <decamps@users.sf.net> -->
+
+<project name="blogmark" default="createxpi">
+        <property name="VERSION" value="1.4-rc1"/>
+        <property name="DESCRIPTION" value="New context-menu item to add the current page in your Blogmarks"/>
+        <!-- XPI file is created after "chrome/blogmark.jar" 
+             is created, which is then stuffed into "blogmark.xpi" -->
+        <target name="createxpi" depends="createjar" description="Assemble the final build blogmark.xpi">
+                <zip destfile="blogmark-${VERSION}.xpi">
+                         <zipfileset dir="." includes="chrome/blogmark.jar" />
+                         <zipfileset dir="." includes="install.rdf" />
+                 </zip>
+         </target>
+
+        <!-- Everything inside the chrome directory is zipped into chrome/blogmark.jar -->
+        <target name="createjar" depends="templates" description="Assemble the jar">
+                 <jar destfile="chrome/blogmark.jar">
+                        <fileset dir="chrome/">
+                                 <include name="**/*"/>
+                                <exclude name="**/*~"/>
+                                <exclude name="**/*.tpl.*"/>
+                                <exclude name="blogmark.jar"/>
+                        </fileset>
+                 </jar>        
+         </target>
+        
+        <target name="templates" description="Generate files from templates.">
+                <copy file="chrome/content/blogmark/contents.rdf.tpl.xml"
+                      tofile="chrome/content/blogmark/contents.rdf"
+                      overwrite="true">
+                        <filterchain>
+                                <replacetokens>
+                                        <token key="VERSION" value="${VERSION}"/>
+                                        <token key="DESCRIPTION" value="${DESCRIPTION}"/>
+                                </replacetokens>
+                        </filterchain>        
+                </copy>
+                <copy file="chrome/content/blogmark/about.xul.tpl.xml"
+                        tofile="chrome/content/blogmark/about.xul" 
+                        overwrite="true">
+                        <filterchain>
+                                <replacetokens>
+                                        <token key="VERSION" value="${VERSION}"/>
+                                </replacetokens>
+                        </filterchain>        
+                </copy>
+                <copy file="install.rdf.tpl.xml"
+                        tofile="install.rdf"
+                        overwrite="true">
+                        <filterchain>
+                                <replacetokens>
+                                        <token key="VERSION" value="${VERSION}"/>
+                                        <token key="DESCRIPTION" value="${DESCRIPTION}"/>
+                                </replacetokens>
+                        </filterchain>        
+                </copy>
+        </target>
+        
+</project>
