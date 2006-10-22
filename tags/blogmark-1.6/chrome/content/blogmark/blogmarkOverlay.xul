@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://blogmark/locale/blogmark.dtd">
+<?xml-stylesheet href="chrome://blogmark/skin/toolbar-button.css" type="text/css"?>
+<overlay id="blogmarkOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<!--This imports our javascript.-->
+<script type="application/x-javascript" src="chrome://blogmark/content/preferences.js"/>
+<script type="application/x-javascript" src="chrome://blogmark/content/blogmarkOverlay.js"/>
+
+
+<!-- Context menu -->
+<popup id="contentAreaContextMenu">
+  <menuitem id="blogmark-contextmenu" 
+            label="&add.menuitem.label;" 
+            accesskey="&interface.accessKey;" 
+            insertafter="context-bookmarkpage"
+			class="menuitem-iconic" 
+			image="chrome://blogmark/skin/icon-small.png"
+            oncommand="BlogmarkMenu.addThis();"/>
+</popup>
+
+<!-- Firefox Toolbar Element -->
+<toolbox id="navigator-toolbox">
+	<toolbarpalette id="BrowserToolbarPalette">
+		<!-- I can't manage to have the image working with the CSS -->
+		<toolbarbutton id="blogmark-button-public"
+			       class="toolbarbutton-1  chromeclass-toolbar-additional"
+			       label="&public.button.label;" 
+			       image="chrome://blogmark/skin/icon-big.png"
+			       oncommand="BlogmarkMenu.publicMarks();" />
+
+		<toolbarbutton id="blogmark-button-my"
+			       class="toolbarbutton-2  chromeclass-toolbar-additional"
+			       label="&my.button.label;" 
+			       image="chrome://blogmark/skin/icon-big-my.png"
+			       oncommand="BlogmarkMenu.myMarks();" />
+
+		<toolbarbutton id="blogmark-button"
+			       class="toolbarbutton-1  chromeclass-toolbar-additional"
+			       label="&add.button.label;" 
+			       image="chrome://blogmark/skin/icon-big-add.png"
+			       oncommand="BlogmarkMenu.addThis();" />
+	</toolbarpalette>
+</toolbox>
+<!-- Firefox menu -->
+<menu id="bookmarks-menu">
+	<menupopup id="menu_BookmarksPopup">
+		<menuitem id="blogmark-menu"
+			  label="&add.menuitem.label;"
+			  insertafter="addBookmarkAsKb"
+			  oncommand="BlogmarkMenu.addThis();"/>
+		<menuseparator/>
+	</menupopup>
+</menu>
+	
+</overlay>

@@ -1,0 +1,10 @@
+content blogmark ~/workspace/blogmark/chrome/content/blogmark/
+
+skin blogmark classic ~/workspace/blogmark/chrome/skin/classic/blogmark/
+
+locale blogmark en ~/workspace/blogmark/chrome/locale/en/blogmark/
+locale blogmark en ~/workspace/blogmark/chrome/locale/fr/blogmark/
+
+overlay chrome://browser/content/browser.xul  chrome://blogmark/content/blogmarkOverlay.xul
+
+style chtome://skin/classic/toolbar-buttons.css
