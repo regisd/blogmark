@@ -6,3 +6,7 @@
 <!ENTITY add.button.label "BlogMark this">
 <!ENTITY public.button.label "Public marks">
 <!ENTITY my.button.label "My marks">
+<!ENTITY pref.window.title "Blogmark preferences">
+<!ENTITY pref.tablabel.General "General">
+<!ENTITY pref.tablabel.Account "Account">
+<!ENTITY pref.groupbox.add_blogmark_with "Add mark with">

@@ -11,6 +11,7 @@
 		<em:homepageURL>http://blog.decamps.info/categorie/informatique/firefox/blogmark-extension/</em:homepageURL>
 		<em:iconURL>chrome://blogmark/skin/small.png</em:iconURL>
 		<em:aboutURL>chrome://blogmark/content/about.xul</em:aboutURL>
+		<em:optionsURL>chrome://blogmark/content/preferences.xul</em:optionsURL>
 		<em:file>
 			<Description about="urn:mozilla:extension:file:blogmark.jar">
 				<em:package>content/blogmark/</em:package>
@@ -22,8 +23,8 @@
 		<em:targetApplication>
 			<Description>
 				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-				<em:minVersion>1.0</em:minVersion>
-				<em:maxVersion>2.0b2</em:maxVersion>
+				<em:minVersion>0.9</em:minVersion>
+				<em:maxVersion>1.6</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 		</Description>

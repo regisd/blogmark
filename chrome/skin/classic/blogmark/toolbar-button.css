@@ -1,25 +1,23 @@
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-
-#blogmark-button-public {
-  list-style-image: url("chrome://blogmark/skin/icon-big.png") ; 
+#blogmark-button { 
+  list-style-image: url("chrome://blogmark/skin/icon-big.png"); 
+  -moz-image-region: rect(0px 24px 24px 0px);  
 }
 
-toolbar[iconsize="small"] #blogmark-button-public {
-  list-style-image: url("chrome://blogmark/skin/icon-small.png") ; 
+#blogmark-button:hover {
+  -moz-image-region: rect(24px 24px 48px 0px);
 }
 
-#blogmark-button-my {
-  list-style-image: url("chrome://blogmark/skin/icon-big-my.png") ; 
+#blogmark-button[disabled="true"] { 
+  -moz-image-region: rect(48px 24px 72px 0px);
 }
 
-toolbar[iconsize="small"] #blogmark-button-my {
-  list-style-image: url("chrome://blogmark/skin/icon-small-my.png") ; 
+toolbar[iconsize="small"] #blogmark-button {
+  list-style-image: url("chrome://blogmark/skin/icon-small.png");
+  -moz-image-region: rect(0px 16px 16px 0px);
 }
-
-#blogmark-button-add {
-  list-style-image: url("chrome://blogmark/skin/icon-big-add.png") ; 
+toolbar[iconsize="small"] #blogmark-button:hover {
+  -moz-image-region: rect(16px 16px 32px 0px);
 }
-
-toolbar[iconsize="small"] #blogmark-button-add {
-  list-style-image: url("chrome://blogmark/skin/icon-small-add.png") ; 
-}
+toolbar[iconsize="small"] #blogmark-button[disabled="true"] {
+  -moz-image-region: rect(32px 16px 48px 0px);
+} 
