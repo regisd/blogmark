@@ -28,8 +28,7 @@ var BlogmarkMenu = {
   myMarks: function() {
     const url = "http://blogmarks.net/my/"
 
-    document
-       .getElementById("content")
+    document.getElementById("content")
        .webNavigation
        .loadURI(url, 0, null, null, null)
   },
@@ -62,11 +61,22 @@ var BlogmarkMenu = {
     var available = 2048;
     available = available - u.length - n.length -r.length;
     //t = t.substr(0,available);
-    var blogmarkURL='http://blogmarks.net/my/new.php?mini=1&truc=3'+
-                     '&title='+encodeURIComponent(n)+
+    var blogmarkURL='http://blogmarks.net/my/marks,new'+
+                     '?title='+encodeURIComponent(n)+
                      '&url='+encodeURIComponent(u)+
                      '&summary='+encodeURIComponent(t)+
                      '&via='+encodeURIComponent(r);
-    window.open(blogmarkURL, 'blogmarks','location=no,toolbar=no,scrollbars=yes,width=350,height=500,status=no');
+    var prefAddmethod = blogmarkPreferences.getCharPref("addmethod");
+    blogmarkPreferences.debug("blogmarksThis "+prefAddmethod);
+    if (prefAddmethod=="add-with-fullwindow") {
+    	//simple bookmarklet
+    	//javascript:q='';   r='';     if(document.selection)q=document.selection.createRange().text;else if(window.getSelection())q=window.getSelection();if (document.referrer) r=document.referrer;void(location.href ='http://blogmarks.net/my/marks,new' +     '?title=' + encodeURIComponent( document.title )+'&url=' + encodeURIComponent( location.href )+'&summary=' + encodeURIComponent( q )+'&via=' + encodeURIComponent( r ));
+        document.getElementById("content").webNavigation.loadURI(blogmarkURL, 0, null, null, null);
+    }
+    else {
+    	//popup bookmarklet
+    	//javascript:var q='';var r='';if(document.selection)q=document.selection.createRange().text;else if(window.getSelection())q=window.getSelection();if(document.referrer)  r=document.referrer;void(open(          'http://blogmarks.net/my/marks,new?mini=1'+'&title='+encodeURIComponent(document.title)+'   &url='+encodeURIComponent(location.href)+   '&summary='+encodeURIComponent(q)      +'&via='+encodeURIComponent(r),'blogmarks','location=no,toolbar=no,scrollbars=yes,width=350,height=450,status=no'));
+	    window.open(blogmarkURL+"&mini=1", 'blogmarks','location=no,toolbar=no,scrollbars=yes,width=350,height=500,status=no');
+    }
   }
 }
