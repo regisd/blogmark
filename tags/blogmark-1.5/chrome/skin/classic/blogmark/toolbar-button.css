@@ -1,0 +1,25 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#blogmark-button-public {
+  list-style-image: url("chrome://blogmark/skin/icon-big.png") ; 
+}
+
+toolbar[iconsize="small"] #blogmark-button-public {
+  list-style-image: url("chrome://blogmark/skin/icon-small.png") ; 
+}
+
+#blogmark-button-my {
+  list-style-image: url("chrome://blogmark/skin/icon-big-my.png") ; 
+}
+
+toolbar[iconsize="small"] #blogmark-button-my {
+  list-style-image: url("chrome://blogmark/skin/icon-small-my.png") ; 
+}
+
+#blogmark-button-add {
+  list-style-image: url("chrome://blogmark/skin/icon-big-add.png") ; 
+}
+
+toolbar[iconsize="small"] #blogmark-button-add {
+  list-style-image: url("chrome://blogmark/skin/icon-small-add.png") ; 
+}
