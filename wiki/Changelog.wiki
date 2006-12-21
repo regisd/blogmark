@@ -1,0 +1,3 @@
+#labels Featured
+The Changelog is available on Mozilla plugins: 
+https://addons.mozilla.org/firefox/1487/history/
