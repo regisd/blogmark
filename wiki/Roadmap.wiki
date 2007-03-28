@@ -11,5 +11,5 @@ Only bug fixes and translations might be added in the future.
 = v 2.x =
 
 This branch is a total rework of the current extension.
- * browsing the blgomarks is fully integrated in the menubar (using ajax to dynamically load the blogmarks)
-
+ * browsing the blogmarks fully integrated in the menubar (using ajax to dynamically load the blogmarks)
+ * integrate the UI to add a mark (using XUL instead of the popup) and asynchronously adds a mark.
