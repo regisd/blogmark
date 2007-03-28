@@ -13,3 +13,4 @@ Only bug fixes and translations might be added in the future.
 This branch is a total rework of the current extension.
  * browsing the blogmarks fully integrated in the menubar (using ajax to dynamically load the blogmarks)
  * integrate the UI to add a mark (using XUL instead of the popup) and asynchronously adds a mark.
+ * prefill the add mark form with popular tags
