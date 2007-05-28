@@ -4,6 +4,7 @@
 <project name="blogmark" default="createxpi">
         <property name="VERSION" value="1.8-SNAPSHOT"/>
         <property name="DESCRIPTION" value="New context-menu item to add the current page in your Blogmarks"/>
+		<property name="WARN_TEMPLATE" value="This file was generated automatically. Don't modify it. Change the template instead."/>
         <!-- XPI file is created after "chrome/blogmark.jar" 
              is created, which is then stuffed into "blogmark.xpi" -->
         <target name="createxpi" depends="createjar" description="Assemble the final build blogmark.xpi">
@@ -31,6 +32,7 @@
                       overwrite="true">
                         <filterchain>
                                 <replacetokens>
+                                		<token key="WARN_TEMPLATE" value="${WARN_TEMPLATE}"/>
                                         <token key="VERSION" value="${VERSION}"/>
                                         <token key="DESCRIPTION" value="${DESCRIPTION}"/>
                                 </replacetokens>
@@ -41,7 +43,8 @@
                         overwrite="true">
                         <filterchain>
                                 <replacetokens>
-                                        <token key="VERSION" value="${VERSION}"/>
+                            		<token key="WARN_TEMPLATE" value="${WARN_TEMPLATE}"/>
+                                	<token key="VERSION" value="${VERSION}"/>
                                 </replacetokens>
                         </filterchain>        
                 </copy>
@@ -50,11 +53,11 @@
                         overwrite="true">
                         <filterchain>
                                 <replacetokens>
+	                            		<token key="WARN_TEMPLATE" value="${WARN_TEMPLATE}"/>
                                         <token key="VERSION" value="${VERSION}"/>
                                         <token key="DESCRIPTION" value="${DESCRIPTION}"/>
                                 </replacetokens>
                         </filterchain>        
                 </copy>
-        </target>
-        
+        </target>    
 </project>
