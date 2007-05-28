@@ -1,2 +1,2 @@
 The Changelog is available on Mozilla plugins: 
-https://addons.mozilla.org/firefox/1487/history/
+https://addons.mozilla.org/fr/firefox/addons/versions/1487
