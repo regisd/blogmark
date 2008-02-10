@@ -41,7 +41,7 @@
 			       oncommand="BlogmarkMenu.addThis();" />
 </toolbarpalette>
 
-<!-- Firefox menu -->
+<!-- Firefox 2 menu -->
 <menu id="bookmarks-menu">
 	<menupopup id="menu_BookmarksPopup">
 		<menuitem id="blogmark-menu"
@@ -51,5 +51,14 @@
 		<menuseparator/>
 	</menupopup>
 </menu>
-	
+<!-- Firefox 3 menu -->
+<menu id="bookmarksMenu">
+	<menupopup id="bookmarksMenuPopup">
+		<menuitem id="blogmarkThisPageMenuitem"
+			  label="&add.menuitem.label;"
+			  insertbefore="subscribeToPageMenuitem"
+			  oncommand="BlogmarkMenu.addThis();"/>
+	</menupopup>
+</menu>
+
 </overlay>
