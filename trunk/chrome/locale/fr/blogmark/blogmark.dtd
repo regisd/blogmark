@@ -1,0 +1,16 @@
+<!ENTITY About "A propos">
+<!ENTITY credits.writtenBy "Écrit par">
+<!ENTITY credits.graphicsBy "Graphiques de">
+<!ENTITY Close "Fermer">
+<!ENTITY interface.accessKey "M">
+<!ENTITY add.menuitem.label "BlogMark Cette Page...">
+<!ENTITY add.button.label "BlogMark cette page">
+<!ENTITY public.button.label "Marks publics">
+<!ENTITY my.button.label "Mes marks">
+<!ENTITY add.button.tooltip "BlogMark cette page">
+<!ENTITY public.button.tooltip "Voir les makrs publics">
+<!ENTITY my.button.tooltip "Voir mes marks">
+<!ENTITY pref.window.title "Préférences de blogmark">
+<!ENTITY pref.tablabel.General "Général">
+<!ENTITY pref.tablabel.Account "Utilisateur">
+<!ENTITY pref.groupbox.add_blogmark_with "Ajouter un mark avec">
