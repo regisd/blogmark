@@ -1,1 +1,0 @@
-pref(blogmark.addmethod,"add-with-fullwindow");

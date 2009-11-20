@@ -1,7 +1,0 @@
-overlay chrome://navigator/content/navigator.xul        chrome://blogmark/content/blogmarkOverlay.xul
-overlay chrome://browser/content/browser.xul    chrome://blogmark/content/blogmarkOverlay.xul
-
-content blogmark   jar:chrome/blogmark.jar!/chrome/content/blogmark/
-
-locale  blogmark   en-US   jar:chrome/blogmark.jar!/locale/en/blogmark/
-locale  blogmark   fr-FR   jar:chrome/blogmark.jar!/locale/fr/blogmark/
