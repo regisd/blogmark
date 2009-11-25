@@ -1,5 +1,6 @@
 body {
   width: 485px;
+  background:#fff url(/img/bg400.png) repeat-x scroll 0 -10px; 
 }
 /* root element for tabs  */
 ul#tabs { 
@@ -77,3 +78,5 @@ ul#tabs a.w4 			{ background-position: -0px -0px; width:194px; }
 ul#tabs a.w4:hover 	{ background-position: -0px -31px; }
 ul#tabs a.w4.current { background-position: -0px -62px; }
 
+div#panes div {
+}
