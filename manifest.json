@@ -4,10 +4,10 @@
   "description": "An extension to easily blogmark a page",
   "browser_action": {
     "default_icon": "icon-small-add.png",
-	"popup": "add.html"
+	"popup": "blogmark.html"
   },
   "permissions": [
-    "http://blogmarks.net/",
+    "http://api.blogmarks.net/",
     "http://api.flickr.com/"
   ]
 }
