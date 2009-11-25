@@ -1,9 +1,10 @@
 {
   "name": "Blogmarks.net",
-  "version": "0.1",
+  "version": "0.2",
   "description": "An extension to easily blogmark a page",
   "browser_action": {
-    "default_icon": "icon-small-add.png"
+    "default_icon": "icon-small-add.png",
+	"popup": "add.html"
   },
   "permissions": [
     "http://blogmarks.net/"
