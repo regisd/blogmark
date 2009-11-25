@@ -1,7 +1,7 @@
+var req = new XMLHttpRequest();
 $(document).ready(init);
 
 function init() {
-var req = new XMLHttpRequest();
 req.open(
     "GET",
     "http://api.flickr.com/services/rest/?" +
