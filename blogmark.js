@@ -8,7 +8,9 @@ $(function() {
 });
 
 function init() {
-  $("ul.tabs").tabs("div.panes > div"); 
+  /* initially all panes are hidden (CSS trick does not work) */ 
+  $("div#panes > div.pane").hide();
+  $("ul#tabs").tabs("div#panes > div", {effect: 'fade', fadeOutSpeed: 400}); 
   getMarks();
 }
 
