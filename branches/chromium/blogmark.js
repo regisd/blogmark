@@ -12,7 +12,6 @@ $(function() {
 		onClick : onTabClicked
 	});
 	getMarks();
-
 });
 
 // send message to page when tab "New" is clicked
@@ -34,7 +33,7 @@ function onTabClicked(event, tabIndex) {
 
 /* Returns 30 latest public marks */
 function getMarks() {
-	req.open("GET", server + "marks");
+	req.open("GET", server + "marks?last=15"); // 15 = 3x5 thumbs
 	req.onreadystatechange = function(evt) {
 		onresponse(evt, showPublicMarks);
 	};
@@ -44,25 +43,28 @@ function getMarks() {
 function showPublicMarks() {
 	var marks = req.responseXML.getElementsByTagName("entry");
 	var publicMarks = document.getElementById("public-marks");
-	var u, t, url, links, a;
+	var itemMark, url, links, a, img;
 	for ( var i = 0, mark; mark = marks[i]; i++) {
-		var itemMark = document.createElement("li");
-		t = mark.getElementsByTagName("title")[0].textContent;
-		u = "#";
+		itemMark = document.createElement("li");
+		img = document.createElement("img");
+		img.setAttribute("alt",
+				mark.getElementsByTagName("title")[0].textContent);
+		img.setAttribute("height","84px");
+		img.setAttribute("width","112px");
+		
 		a = document.createElement("a");
 
-		a.innerHTML = t;
 		// get the URL related to this entry (the blogmarked page)
 		links = mark.getElementsByTagName("link"); // TODO check there is at
 													// least one
 		for ( var j = 0, l; l = links[j]; j++) {
 			if (l.getAttribute("rel") == "related") {
-				u = l.getAttribute("href");
-				break;
+				a.setAttribute("href", l.getAttribute("href"));
+			} else if (l.getAttribute("rel") == "enclosure") {
+				img.setAttribute("src", l.getAttribute("href"));
 			}
 		}
-		a.setAttribute("href", u);
-
+		a.appendChild(img);
 		itemMark.appendChild(a);
 		publicMarks.appendChild(itemMark);
 	}
