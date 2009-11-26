@@ -2,16 +2,31 @@ var server="http://api.blogmarks.net/";
 var req = new XMLHttpRequest();
 
 // perform JavaScript after the document is scriptable. 
-$(function() { 
-    // setup ul.tabs to work as tabs for each div directly under div.panes 
-    init();
+$(function() {
+  // initially all panes are hidden (CSS trick does not work) 
+  $("div#panes > div.pane").hide();
+  // setup ul.tabs to work as tabs for each div directly under div.panes 
+  $("ul#tabs").tabs("div#panes > div", {
+    effect: "fade",
+    fadeOutSpeed: 400,
+    onClick: onTabClicked
+  });
+  getMarks();
+
 });
 
-function init() {
-  /* initially all panes are hidden (CSS trick does not work) */ 
-  $("div#panes > div.pane").hide();
-  $("ul#tabs").tabs("div#panes > div", {effect: 'fade', fadeOutSpeed: 400}); 
-  getMarks();
+//send message to page when tab "New" is clicked
+function onTabClicked(event, tabIndex) {
+    if(tabIndex!=3) return;
+    // tab is "new"
+    chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendRequest(tab.id, {blogmark:"new"}, function(response) {
+	console.log("title="+response.title + "\nurl="+response.url);
+	$("#new-url").val(response.url);
+	$("#new-title").val(response.title);
+	$("#new-descripton").val(response.description);
+      });
+    });
 }
 
 /* Returns 30 latest public marks */

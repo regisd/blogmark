@@ -16,7 +16,8 @@
 <ul id="tabs"> 
     <li><a href="#public-marks" class="w3">Marks</a></li> 
     <li><a href="#my-marks" class="w2">My</a></li> 
-    <li><a href="#new-mark" class="w2">New</a></li> 
+    <li><a href="#new-mark-iframe" class="w2">New (iframe)</a></li>
+    <li><a href="#new-mark" class="w2">New (ajax)</a></li>  
 </ul> 
  
 <!-- tab "panes" --> 
@@ -27,10 +28,15 @@
   </div><!--/public marks pane-->
 
   <div class="pane"><!-- second pane: my marks-->
-  TODO my marks
+  TODO my marks<br/>
+
   </div><!--/my marks pane-->
 
-  <div class="pane"><!-- third tab: new mark -->
+  <div class="pane"><!-- third tab: new mark with iframe -->
+    <iframe src="http://blogmarks.net/my/marks,new?mini=1" width="350" height="450"></iframe>
+  </div>
+
+  <div class="pane"><!-- third tab: new mark with ajax  -->
   <form action="http://blogmarks.net/my/marks,new" name="add-to-blogmarks">
     <label for="new-url">URL</label>
     <input id="new-url" value="" 
