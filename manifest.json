@@ -7,7 +7,14 @@
 	"popup": "blogmark.html"
   },
   "permissions": [
+    "tabs",
     "http://api.blogmarks.net/",
-    "http://api.flickr.com/"
+    "http://blogmarks.net/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["contentscript.js"]
+    }
   ]
 }
