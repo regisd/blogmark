@@ -2,6 +2,8 @@ body {
   width: 485px;
   background:#fff url(/img/bg400.png) repeat-x scroll 0 -10px; 
 }
+.clearall { clear: both; }
+
 /* root element for tabs  */
 ul#tabs { 
 	list-style:none; 
@@ -79,4 +81,17 @@ ul#tabs a.w4:hover 	{ background-position: -0px -31px; }
 ul#tabs a.w4.current { background-position: -0px -62px; }
 
 div#panes div {
+}
+
+/* Layout of marks */
+#public-marks {
+	width: 336px; /* img are 84x112px */
+}
+/* The wider this li is, the fewer columns there will be */
+ul.multi_columns li{
+    text-align: left;
+    float: left;
+    list-style: none;
+    /*height: 30px;
+    width: 50px;*/
 }
