@@ -49,14 +49,14 @@ function showPublicMarks() {
 		img = document.createElement("img");
 		img.setAttribute("alt",
 				mark.getElementsByTagName("title")[0].textContent);
-		img.setAttribute("height","84px");
-		img.setAttribute("width","112px");
-		
+		img.setAttribute("height", "84px");
+		img.setAttribute("width", "112px");
+
 		a = document.createElement("a");
 
 		// get the URL related to this entry (the blogmarked page)
 		links = mark.getElementsByTagName("link"); // TODO check there is at
-													// least one
+		// least one
 		for ( var j = 0, l; l = links[j]; j++) {
 			if (l.getAttribute("rel") == "related") {
 				a.setAttribute("href", l.getAttribute("href"));
