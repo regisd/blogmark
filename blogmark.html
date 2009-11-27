@@ -4,10 +4,14 @@
 <head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type" />
 <title>Blogmarks.net : New mark</title>
+<!-- JQuery is used fo animations and easier HTML manip -->
 <script type="text/javascript" language="javascript"
 	src="jquery-1.3.2.min.js"></script>
 <script type="text/javascript" language="javascript"
 	src="jquery.tools.min.js"></script>
+<!-- WSSE authentification -->
+<script type="text/javascript" language="javascript" src="wsse.js"></script>
+<!-- core -->
 <script type="text/javascript" language="javascript" src="blogmark.js"></script>
 <link rel="stylesheet" type="text/css" href="blogmark.css" />
 </head>
@@ -24,15 +28,17 @@
 <!-- tab "panes" -->
 <div id="panes"><!-- panes container -->
 
-<div class="pane"><!-- first pane: public marks --> <br
-	class="clearall" />
-<ul id="public-marks" class="multi_columns"></ul>
-<div id="public-mark-info"></div>
+<div class="pane"><!-- first pane: public marks --> 
+	<br class="clearall" />
+	<ul id="public-marks" class="multi_columns"></ul>
+	<div id="public-mark-info"></div>
 </div>
 <!--/public marks pane-->
 
-<div class="pane"><!-- second pane: my marks--> TODO my marks<br />
-
+<div class="pane"><!-- second pane: my marks--> 
+	<br class="clearall" />
+	<ul id="my-marks" class="multi_columns"></ul>
+	<div id="my-mark-info"></div>
 </div>
 <!--/my marks pane-->
 
@@ -67,7 +73,8 @@ par des virgules : tag1, tag2, etc</em> <br />
 	id="visibility-my" value="1" type="radio" /> <label
 	for="visibility-my">priv&eacute;</label> <input name="referer" value=""
 	type="hidden" /> <input name="id" value="" type="hidden" /> <input
-	accesskey="s" class="submit" value="Enregistrer" type="submit" /></form>
+	accesskey="s" class="submit" value="Enregistrer" type="submit" onclick="saveMark()"/>
+</form>
 </div><!--/new mark pane-->
 
 </div>
