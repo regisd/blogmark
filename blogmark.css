@@ -95,3 +95,9 @@ ul.multi_columns li{
     /*height: 30px;
     width: 50px;*/
 }
+
+/* status and information zone */
+#status {
+	width: 485px;
+	background-color: #d3e3f7;
+}

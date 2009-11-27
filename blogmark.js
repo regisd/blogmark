@@ -1,12 +1,5 @@
 var server = "http://api.blogmarks.net/";
-var reqlimit=15; //15 items is 3x5 images
-
-/* conf is stored in file right now */
-conf={"user":"znarf","password":"foo"}; // dummy values please copy this object in conf.json
-var request = new XMLHttpRequest();
-request.open("GET","/conf.json",false);
-request.send(null);
-conf=JSON.parse( request.responseText );
+var reqlimit = 15; // 15 items is 3x5 images
 
 // perform JavaScript after the document is scriptable.
 $(function() {
@@ -20,7 +13,7 @@ $(function() {
 	});
 	getMarks("public");
 	getMarks("my");
-	
+
 });
 
 // send message to page when tab "New" is clicked
@@ -44,25 +37,30 @@ function onTabClicked(event, tabIndex) {
 /* Returns 15 latest public marks ; or in private marks if my is true */
 function getMarks(zone) {
 	var req = new XMLHttpRequest();
-	if (zone == "my" ) {
-		req.open("GET", server + "marks?last="+reqlimit+"&author="+conf.user); 
-		req.setRequestHeader("X-WSSE", wsseHeader(conf.user, conf.password));
-	}
-	else {
-		req.open("GET", server + "marks?last="+reqlimit); 
+	if (zone == "my") {
+		if (!localStorage["user"]) {
+			message("Please set user and password in <a href=\"/options.html\">Options</a>");
+			return;
+		}
+		req.open("GET", server + "marks?last=" + reqlimit + "&author="
+				+ localStorage["user"]);
+		req.setRequestHeader("X-WSSE", wsseHeader(localStorage["user"],
+				localStorage["password"]));
+	} else {
+		req.open("GET", server + "marks?last=" + reqlimit);
 	}
 	req.onreadystatechange = function(evt) {
-		onresponse(req, evt, function(){
+		onresponse(req, evt, function() {
 			var marks = req.responseXML.getElementsByTagName("entry");
-			showMarks(zone,marks);
-			});
+			showMarks(zone, marks);
+		});
 	};
 	req.send(null);
 }
 
 /* display the 15 latest marks, in zone=(my|public) */
-function showMarks(zone,marks) {	
-	var hList = document.getElementById(zone+"-marks");
+function showMarks(zone, marks) {
+	var hList = document.getElementById(zone + "-marks");
 	var itemMark, url, links, a, img;
 	for ( var i = 0, mark; mark = marks[i]; i++) {
 		itemMark = document.createElement("li");
@@ -76,8 +74,9 @@ function showMarks(zone,marks) {
 		a.setAttribute("title",
 				mark.getElementsByTagName("title")[0].textContent);
 		// get the URL related to this entry (the blogmarked page)
-		links = mark.getElementsByTagName("link"); 
-		if (links == null) return;
+		links = mark.getElementsByTagName("link");
+		if (links == null)
+			return;
 		for ( var j = 0, l; l = links[j]; j++) {
 			if (l.getAttribute("rel") == "related") {
 				a.setAttribute("href", "#");
@@ -94,8 +93,8 @@ function showMarks(zone,marks) {
 }
 
 function bmopen(url) {
-	window.close();  // close extension popup
-	window.open(url);//open URL in new tab
+	window.close(); // close extension popup
+	window.open(url);// open URL in new tab
 }
 
 function getPublicTags() {
@@ -130,4 +129,13 @@ function saveMark() {
 	// TODO
 	alert("not implemented yet");
 	window.close();
+}
+
+/* set nicely a message in a div (with fading) */
+function message(msg) {
+	$("#status").html(msg);
+	$("#status").show();
+	setTimeout(function() {
+		$("#status").fadeOut("normal");
+	}, 2000);
 }
