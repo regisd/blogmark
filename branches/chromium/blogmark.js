@@ -1,5 +1,12 @@
 var server = "http://api.blogmarks.net/";
-var req = new XMLHttpRequest();
+var reqlimit=15; //15 items is 3x5 images
+
+/* conf is stored in file right now */
+conf={"user":"znarf","password":"foo"}; // dummy values please copy this object in conf.json
+var request = new XMLHttpRequest();
+request.open("GET","/conf.json",false);
+request.send(null);
+conf=JSON.parse( request.responseText );
 
 // perform JavaScript after the document is scriptable.
 $(function() {
@@ -11,7 +18,9 @@ $(function() {
 		fadeOutSpeed : 400,
 		onClick : onTabClicked
 	});
-	getMarks();
+	getMarks("public");
+	getMarks("my");
+	
 });
 
 // send message to page when tab "New" is clicked
@@ -32,18 +41,28 @@ function onTabClicked(event, tabIndex) {
 	});
 }
 
-/* Returns 15 latest public marks */
-function getMarks() {
-	req.open("GET", server + "marks?last=15"); // 15 = 3x5 thumbs
+/* Returns 15 latest public marks ; or in private marks if my is true */
+function getMarks(zone) {
+	var req = new XMLHttpRequest();
+	if (zone == "my" ) {
+		req.open("GET", server + "marks?last="+reqlimit+"&author="+conf.user); 
+		req.setRequestHeader("X-WSSE", wsseHeader(conf.user, conf.password));
+	}
+	else {
+		req.open("GET", server + "marks?last="+reqlimit); 
+	}
 	req.onreadystatechange = function(evt) {
-		onresponse(evt, showPublicMarks);
+		onresponse(req, evt, function(){
+			var marks = req.responseXML.getElementsByTagName("entry");
+			showMarks(zone,marks);
+			});
 	};
 	req.send(null);
 }
 
-function showPublicMarks() {
-	var marks = req.responseXML.getElementsByTagName("entry");
-	var publicMarks = document.getElementById("public-marks");
+/* display the 15 latest marks, in zone=(my|public) */
+function showMarks(zone,marks) {	
+	var hList = document.getElementById(zone+"-marks");
 	var itemMark, url, links, a, img;
 	for ( var i = 0, mark; mark = marks[i]; i++) {
 		itemMark = document.createElement("li");
@@ -70,7 +89,7 @@ function showPublicMarks() {
 		}
 		a.appendChild(img);
 		itemMark.appendChild(a);
-		publicMarks.appendChild(itemMark);
+		hList.appendChild(itemMark);
 	}
 }
 
@@ -97,11 +116,18 @@ function showPublictags() {
 	}
 }
 
-function onresponse(evenement, f) {
+/* subrouting to handle an Ajax response */
+function onresponse(req, evenement, f) {
 	if (req.readyState == 4) {
 		if (req.status == 200)
 			f();
 		else
 			alert("Error requesting API\n" + evenement.target.status);
 	}
+}
+
+function saveMark() {
+	// TODO
+	alert("not implemented yet");
+	window.close();
 }
