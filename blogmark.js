@@ -16,7 +16,7 @@ $(function() {
 
 // send message to page when tab "New" is clicked
 function onTabClicked(event, tabIndex) {
-	if (tabIndex != 3)
+	if (tabIndex != 2)
 		return;
 	// tab is "new"
 	chrome.tabs.getSelected(null, function(tab) {
@@ -26,12 +26,13 @@ function onTabClicked(event, tabIndex) {
 			console.log("title=" + response.title + "\nurl=" + response.url);
 			$("#new-url").val(response.url);
 			$("#new-title").val(response.title);
-			$("#new-descripton").val(response.description);
+			$("#new-description").val(response.description);
+			$("#new-via").val(response.via);
 		});
 	});
 }
 
-/* Returns 30 latest public marks */
+/* Returns 15 latest public marks */
 function getMarks() {
 	req.open("GET", server + "marks?last=15"); // 15 = 3x5 thumbs
 	req.onreadystatechange = function(evt) {
@@ -53,13 +54,16 @@ function showPublicMarks() {
 		img.setAttribute("width", "112px");
 
 		a = document.createElement("a");
-
+		a.setAttribute("title",
+				mark.getElementsByTagName("title")[0].textContent);
 		// get the URL related to this entry (the blogmarked page)
-		links = mark.getElementsByTagName("link"); // TODO check there is at
-		// least one
+		links = mark.getElementsByTagName("link"); 
+		if (links == null) return;
 		for ( var j = 0, l; l = links[j]; j++) {
 			if (l.getAttribute("rel") == "related") {
-				a.setAttribute("href", l.getAttribute("href"));
+				a.setAttribute("href", "#");
+				a.setAttribute("onClick", "bmopen(\"" + l.getAttribute("href")
+						+ "\");");
 			} else if (l.getAttribute("rel") == "enclosure") {
 				img.setAttribute("src", l.getAttribute("href"));
 			}
@@ -68,6 +72,11 @@ function showPublicMarks() {
 		itemMark.appendChild(a);
 		publicMarks.appendChild(itemMark);
 	}
+}
+
+function bmopen(url) {
+	window.close();  // close extension popup
+	window.open(url);//open URL in new tab
 }
 
 function getPublicTags() {
