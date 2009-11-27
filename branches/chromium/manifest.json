@@ -6,6 +6,7 @@
     "default_icon": "icon-small-add.png",
 	"popup": "blogmark.html"
   },
+  "options_page": "options.html",
   "permissions": [
     "tabs",
     "http://api.blogmarks.net/",
