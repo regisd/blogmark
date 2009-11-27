@@ -1,0 +1,21 @@
+{
+  "name": "Blogmarks.net",
+  "version": "0.3",
+  "description": "An extension to easily blogmark a page",
+  "browser_action": {
+    "default_icon": "icon-small-add.png",
+	"popup": "blogmark.html"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "tabs",
+    "http://api.blogmarks.net/",
+    "http://blogmarks.net/"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["contentscript.js"]
+    }
+  ]
+}
