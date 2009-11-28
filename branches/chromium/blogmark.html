@@ -44,7 +44,7 @@
 
 <div class="pane"><!-- third tab: new mark with ajax  --> <br
 	class="clearall" />
-<form action="http://blogmarks.net/my/marks,new" name="add-to-blogmarks">
+<form name="add-to-blogmarks">
 <label for="new-url">URL</label> <input id="new-url" value="" name="url"
 	size="50" maxlength="255" type="text" /> <label for="new-title">Titre</label>
 <input id="new-title" value="" name="title" size="50" maxlength="255"
@@ -72,8 +72,10 @@ par des virgules : tag1, tag2, etc</em> <br />
 	for="visibility-pub">public</label> <input name="visibility"
 	id="visibility-my" value="1" type="radio" /> <label
 	for="visibility-my">priv&eacute;</label> <input name="referer" value=""
-	type="hidden" /> <input name="id" value="" type="hidden" /> <input
-	accesskey="s" class="submit" value="Enregistrer" type="submit" onclick="saveMark()"/>
+	type="hidden" /> <input name="id" value="" type="hidden" /> 
+	
+	<input	accesskey="s" class="submit" value="Enregistrer" type="submit" 
+	        onclick="saveMark()"/>
 </form>
 </div><!--/new mark pane-->
 
