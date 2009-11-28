@@ -11,8 +11,8 @@ $(function() {
 		fadeOutSpeed : 400,
 		onClick : onTabClicked
 	});
-	getMarks("public");
-	getMarks("my");
+	//getMarks("public");
+	//getMarks("my");
 
 });
 
@@ -126,9 +126,29 @@ function onresponse(req, evenement, f) {
 }
 
 function saveMark() {
-	// TODO
-	alert("not implemented yet");
-	window.close();
+	var req=new XMLHttpRequest();
+	req.open("POST", server + "marks");
+	req.setRequestHeader("Accept","application/atom+xml");
+	req.setRequestHeader("Content-Type","text/xml; charset=utf-8");
+	req.setRequestHeader("X-WSSE", wsseHeader(localStorage["user"],
+			localStorage["password"]));
+	var xmlDoc = document.implementation.createDocument("http://purl.org/atom/ns#draft-ietf-atompub-format-05","entry",null);
+	xmlDoc.documentElement.setAttribute("xmlns:bm","http://api.blogmarks.net/ns#");
+	xmlDoc.documentElement.setAttribute("version","draft-ietf-atompub-format-05:do not deploy");
+	var node;
+	node=xmlDoc.createElement("title");
+	node.textContent=$("#new-title").val();
+	xmlDoc.firstChild.appendChild(node);
+	node=xmlDoc.createElement("link");
+	node.setAttribute("rel",$("#new-url").val());
+	xmlDoc.firstChild.appendChild(node);
+	node=xmlDoc.createElement("link");
+	node.setAttribute("via",$("#new-via").val());
+	xmlDoc.firstChild.appendChild(node);
+	
+	doc=(new XMLSerializer()).serializeToString(xmlDoc);
+	req.send(doc);
+	console.log("send "+doc);
 }
 
 /* set nicely a message in a div (with fading) */
