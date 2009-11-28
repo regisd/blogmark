@@ -3,7 +3,7 @@
   "version": "0.4",
   "description": "An extension to easily blogmark a page",
   "browser_action": {
-    "default_icon": "icon-small-add.png",
+    "default_icon": "img/icon-small-add.png",
 	"popup": "blogmark.html"
   },
   "options_page": "options.html",
