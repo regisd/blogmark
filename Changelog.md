@@ -1,0 +1,5 @@
+The Changelog is available on Mozilla plugins:
+https://addons.mozilla.org/fr/firefox/addons/versions/1487
+
+Version 1.8
+  * Upgraded for Firefox 3
